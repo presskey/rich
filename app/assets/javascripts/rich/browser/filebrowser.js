@@ -93,7 +93,8 @@ rich.Browser.prototype = {
     },
 	
 	selectItem: function(item) {
-		var url = $(item).data('uris')[this._options.currentStyle];
+		var urls = $(item).data('uris');
+    var url = urls[this._options.currentStyle];
 		var id = $(item).data('rich-asset-id');
 		var type = $(item).data('rich-asset-type');
 		var name = $(item).data('rich-asset-name');
@@ -102,7 +103,7 @@ rich.Browser.prototype = {
 		if($.QueryString["CKEditor"]=='picker') {
 			window.opener.assetPicker.setAsset($.QueryString["dom_id"], url, id, type);
 		} else {
-			window.opener.CKEDITOR.tools.callFunction($.QueryString["CKEditorFuncNum"], url, id, name);			
+			window.opener.CKEDITOR.tools.callFunction($.QueryString["CKEditorFuncNum"], urls, id, name);			
 		}
 		
 		// wait a short while before closing the window or regaining focus

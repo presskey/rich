@@ -7,9 +7,9 @@
 	    init: function(editor) {
 
 			// register a callback that actually inserts a selected image
-	    editor._.insertImagefn = CKEDITOR.tools.addFunction(function(url, id, name){
-				this.insertHtml('<img src="' + url + '" alt="" data-rich-file-id="' + id + '" />');
-			}, editor);
+			editor._.insertImagefn = CKEDITOR.tools.addFunction(function(urls, id, name){
+        this.insertHtml('<a href="' + urls['original'] + '"><img src="' + urls['thumb'] + '" alt="" data-rich-file-id="' + id + '" /></a>&nbsp;');
+      }, editor);
 
 			editor._.insertFilefn = CKEDITOR.tools.addFunction(function(url, id, name){
 				this.insertHtml('<a href="' + url + '" data-rich-file-id="' + id + '">' + name + '</a>');
